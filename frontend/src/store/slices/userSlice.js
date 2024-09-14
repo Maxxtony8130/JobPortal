@@ -133,9 +133,11 @@ export const getUser = () => async (dispatch) => {
         withCredentials: true,
       }
     );
+
     dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
+    console.log(error.response);
     dispatch(userSlice.actions.fetchUserFailed(error.response.data.message));
   }
 };
